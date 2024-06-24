@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4415472832642506938}
   - component: {fileID: 6953048717771821315}
   m_Layer: 0
-  m_Name: White Block
-  m_TagString: Block
+  m_Name: White Breakable Block
+  m_TagString: Breakable Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,3 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundOnDestroy: {fileID: 8300000, guid: 355e679c633782a45a1722c3cfe50de2, type: 3}
+  _vfxOnDestroy: {fileID: 100000, guid: 7d846c02296ef4dc4abff04ce3e5262c, type: 3}
+  _maxHits: 2
+  _hitSprites:
+  - {fileID: 21300000, guid: 042876f18c9caba4a904e96527f5faba, type: 3}

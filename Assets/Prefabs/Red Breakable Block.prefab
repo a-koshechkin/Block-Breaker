@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 571308597751758387, guid: 0b9ac15fc88b2f64b93180d4452725ae, type: 3}
       propertyPath: m_Name
-      value: Block (12) Variant
+      value: Red Breakable Block
       objectReference: {fileID: 0}
     - target: {fileID: 6835930226139223904, guid: 0b9ac15fc88b2f64b93180d4452725ae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,6 +52,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6953048717771821315, guid: 0b9ac15fc88b2f64b93180d4452725ae, type: 3}
+      propertyPath: _maxHits
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953048717771821315, guid: 0b9ac15fc88b2f64b93180d4452725ae, type: 3}
+      propertyPath: _hitSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953048717771821315, guid: 0b9ac15fc88b2f64b93180d4452725ae, type: 3}
+      propertyPath: _hitSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 47a6b2f1133530d4893da07661e92c9d, type: 3}
+    - target: {fileID: 6953048717771821315, guid: 0b9ac15fc88b2f64b93180d4452725ae, type: 3}
+      propertyPath: _hitSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 042876f18c9caba4a904e96527f5faba, type: 3}
     - target: {fileID: 7815057185010122113, guid: 0b9ac15fc88b2f64b93180d4452725ae, type: 3}
       propertyPath: m_Color.b
       value: 0

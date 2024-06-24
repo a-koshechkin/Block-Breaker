@@ -65,9 +65,10 @@ public class Ball : MonoBehaviour
             var audio = collision.gameObject.tag switch
             {
                 "Wall" => _ballSounds.First(s => s.name.Equals("SFX_Click_2")),
-                "Block" => _ballSounds.First(s => s.name.Equals("SFX_Click")),
+                "Breakable block" => _ballSounds.First(s => s.name.Equals("SFX_Click")),
+                "Unbreakable block" => _ballSounds.First(s => s.name.Equals("SFX_Clunk")),
                 "Paddle" => _ballSounds.First(s => s.name.Equals("SFX_Bounce")),
-                _ => _ballSounds.First(s => s.name.Equals("SFX_Clunk"))
+                _ => _ballSounds.First(s => s.name.Equals("SFX_Click_2"))
             };
             _ballAudioSource.PlayOneShot(audio);
         }
