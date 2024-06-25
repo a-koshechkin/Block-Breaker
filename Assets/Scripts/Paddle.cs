@@ -2,14 +2,22 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
+    #region Fields
+
     private GameSession _gameSession;
     private Ball _ball;
+
+    private readonly float _paddleSize = 2f;
+
     private float _fieldWidthInUnits;
     private float _pixelsToUnitsRatio;
-    private readonly float _paddleSize = 2f;
     private float _minX;
     private float _maxX;
-    // Start is called before the first frame update
+
+    #endregion
+
+    #region MonoBehaviour
+
     void Start()
     {
         _gameSession = FindObjectOfType<GameSession>();
@@ -20,11 +28,14 @@ public class Paddle : MonoBehaviour
         _maxX = _fieldWidthInUnits - _paddleSize / 2;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position = new Vector2(GetNewXPosition(), transform.position.y);
     }
+
+    #endregion
+
+    #region Methods
 
     private float GetNewXPosition()
     {
@@ -37,4 +48,6 @@ public class Paddle : MonoBehaviour
             return Mathf.Clamp(Input.mousePosition.x * _pixelsToUnitsRatio, _minX, _maxX);
         }
     }
+
+    #endregion
 }

@@ -10760,6 +10760,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game State
       objectReference: {fileID: 0}
+    - target: {fileID: 7743080216917154853, guid: ff0b29ff7a7b7474db45137fb193efdf, type: 3}
+      propertyPath: _isAutoplayEnabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

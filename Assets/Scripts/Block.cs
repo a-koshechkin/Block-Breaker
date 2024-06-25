@@ -1,9 +1,12 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+using static Constants;
+
 public class Block : MonoBehaviour
 {
+    #region Fields
+
     [SerializeField] private AudioClip _soundOnDestroy;
     [SerializeField] private GameObject _vfxOnDestroy;
     [SerializeField] private List<Sprite> _hitSprites;
@@ -11,9 +14,12 @@ public class Block : MonoBehaviour
     private int _currentHits = 0;
     private int _maxHits;
 
+    #endregion
+
+    #region MonoBehaviour
     private void Start()
     {
-        if (CompareTag("Breakable Block"))
+        if (IsBreakableBlock())
         {
             FindObjectOfType<Level>().AddBreakableBlock();
             _maxHits = _hitSprites.Count + 1;
@@ -22,7 +28,7 @@ public class Block : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (CompareTag("Breakable Block"))
+        if (IsBreakableBlock())
         {
             _currentHits++;
             if (_currentHits >= _maxHits)
@@ -35,6 +41,15 @@ public class Block : MonoBehaviour
                 ChangeHitSprite();
             }
         }
+    }
+
+    #endregion
+
+    #region Methods
+
+    private bool IsBreakableBlock()
+    {
+        return CompareTag(Tags[Entities.BreakableBlock]);
     }
 
     private void ChangeHitSprite()
@@ -52,7 +67,8 @@ public class Block : MonoBehaviour
 
     private void TriggerVfx()
     {
-        var vfx = Instantiate(_vfxOnDestroy, transform.position, transform.rotation);
-        Destroy(vfx, 2f);
+        Destroy(Instantiate(_vfxOnDestroy, transform.position, transform.rotation), 2f);
     }
+
+    #endregion
 }

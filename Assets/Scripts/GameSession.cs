@@ -3,6 +3,8 @@ using TMPro;
 
 public class GameSession : MonoBehaviour
 {
+    #region Fields
+
     [Range(_minGameSpeed, _maxGameSpeed)][SerializeField] private float _gameSpeed = 1;
     [SerializeField] TextMeshProUGUI _scoreText;
     [SerializeField] bool _isAutoplayEnabled = false;
@@ -11,9 +13,17 @@ public class GameSession : MonoBehaviour
     private const float _maxGameSpeed = 4f;
 
     private int _currentScore = 0;
-    private int _pointsPerBlock = 50;
+    private readonly int _pointsPerBlock = 50;
+
+    #endregion
+
+    #region Properties
 
     public bool IsAutoplayEnabled => _isAutoplayEnabled;
+
+    #endregion
+
+    #region MonoBehaviour
 
     private void Awake()
     {
@@ -28,17 +38,19 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         _scoreText.text = _currentScore.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Time.timeScale = _gameSpeed;
     }
+
+    #endregion
+
+    #region Methods
 
     public void IncreaseScore()
     {
@@ -51,4 +63,6 @@ public class GameSession : MonoBehaviour
         gameObject.SetActive(false);
         Destroy(gameObject);
     }
+
+    #endregion
 }

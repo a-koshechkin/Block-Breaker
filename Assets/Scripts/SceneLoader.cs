@@ -3,7 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public void LoadNextScene()
+    #region Methods
+
+    public static void LoadNextScene()
     {
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (currentSceneIndex < SceneManager.sceneCountInBuildSettings - 1)
@@ -17,12 +19,12 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    public void LoadGameOverScene()
+    public static void LoadGameOverScene()
     {
         SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 1);
     }
 
-    public void Quit()
+    public static void Quit()
     {
         Application.Quit();
 
@@ -30,4 +32,6 @@ public class SceneLoader : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }
+
+    #endregion
 }

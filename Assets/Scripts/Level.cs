@@ -3,20 +3,13 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
+    #region Fields
+
     private int _numberOfBreakableBlocks;
-    private SceneLoader _sceneLoader;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        _sceneLoader = FindObjectOfType<SceneLoader>();
-    }
+    #endregion
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #region Methods
 
     public void AddBreakableBlock()
     {
@@ -35,6 +28,8 @@ public class Level : MonoBehaviour
     private IEnumerator LoadNextLevel()
     {
         yield return new WaitForSeconds(0.25f);
-        _sceneLoader.LoadNextScene();
+        SceneLoader.LoadNextScene();
     }
+
+    #endregion
 }
