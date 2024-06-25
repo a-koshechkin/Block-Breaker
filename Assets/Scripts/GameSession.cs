@@ -5,12 +5,15 @@ public class GameSession : MonoBehaviour
 {
     [Range(_minGameSpeed, _maxGameSpeed)][SerializeField] private float _gameSpeed = 1;
     [SerializeField] TextMeshProUGUI _scoreText;
+    [SerializeField] bool _isAutoplayEnabled = false;
 
     private const float _minGameSpeed = 0.25f;
     private const float _maxGameSpeed = 4f;
 
     private int _currentScore = 0;
     private int _pointsPerBlock = 50;
+
+    public bool IsAutoplayEnabled => _isAutoplayEnabled;
 
     private void Awake()
     {
