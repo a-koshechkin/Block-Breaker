@@ -24,6 +24,14 @@ public class Ball : MonoBehaviour
     private AudioSource _ballAudioSource;
     private Paddle _paddle;
 
+    private readonly Dictionary<Entities, string> _ballSoundsNames = new()
+    {
+        { Entities.Wall, "SFX_Click_2"},
+        { Entities.Paddle, "SFX_Bounce"},
+        { Entities.BreakableBlock, "SFX_Click"},
+        { Entities.UnbreakableBlock, "SFX_Clunk"}
+    };
+
     #endregion
 
     #region MonoBehaviour
@@ -88,7 +96,7 @@ public class Ball : MonoBehaviour
     private void PlayAnAudio(Collision2D collision)
     {
         var entity = Tags.First(t => collision.gameObject.CompareTag(t.Value)).Key;
-        var audio = _ballSounds.First(s => s.name.Equals(BallSounds[entity]));
+        var audio = _ballSounds.First(s => s.name.Equals(_ballSoundsNames[entity]));
         _ballAudioSource.PlayOneShot(audio);
     }
 

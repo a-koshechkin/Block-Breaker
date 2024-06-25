@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ public class Block : MonoBehaviour
     private int _currentHits = 0;
     private int _maxHits;
 
+    private event Action OnBrickCreated;
+    private event Action OnBrickDestroyed;
+
     #endregion
 
     #region MonoBehaviour
@@ -21,7 +25,13 @@ public class Block : MonoBehaviour
     {
         if (IsBreakableBlock())
         {
-            FindObjectOfType<Level>().AddBreakableBlock();
+            var level = FindObjectOfType<Level>();
+            OnBrickCreated += level.AddBreakableBlock;
+            OnBrickDestroyed += level.RemoveBreakableBlock;
+            OnBrickDestroyed += FindObjectOfType<GameSession>().IncreaseScore;
+
+            OnBrickCreated.Invoke();
+
             _maxHits = _hitSprites.Count + 1;
         }
     }
@@ -33,7 +43,6 @@ public class Block : MonoBehaviour
             _currentHits++;
             if (_currentHits >= _maxHits)
             {
-                FindObjectOfType<GameSession>().IncreaseScore();
                 DestroyBlock();
             }
             else
@@ -61,7 +70,7 @@ public class Block : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(_soundOnDestroy, Camera.main.transform.position, 0.05f);
         TriggerVfx();
-        FindObjectOfType<Level>().RemoveBreakableBlock();
+        OnBrickDestroyed.Invoke();
         Destroy(gameObject);
     }
 
